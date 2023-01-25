@@ -26,9 +26,8 @@ get_dictionary <- function() {
 }
 
 read_by_key <- function(dict, key) {
-  # TODO: should the user be allowed to use `.` as a compound path to the key?
-  #  could be useful for organizing translations in multiple files/domains
-  dict[["translation"]][[key]]
+  key <- strsplit(key, ".", fixed = TRUE)[[1]]
+  Reduce(`[[`, key, init = dict[["translation"]])
 }
 
 # TODO: perhaps add `.CURRENT_DICT` so that extraction can be skipped if locale
