@@ -1,12 +1,14 @@
 #' @importFrom glue glue
 #' @export
 trans <- Vectorize(function(.key, ..., .n = NULL) {
-  .ret <- read_by_key(get_dictionary(), .key)
+  dict <- get_dictionary()
+  .ret <- read_by_key(dict, .key)
 
   # If key not found in translation, warn user and return untranslated key
   if (is.null(.ret)) {
+    dict_locale <- dict[["config"]][["locale"]]
     warning(
-      glue("'{.key}' key is missing translation for current locale."),
+      glue("'{.key}' key is missing translation for locale '{dict_locale}'."),
       call. = FALSE
     )
     return(.key)
@@ -14,7 +16,7 @@ trans <- Vectorize(function(.key, ..., .n = NULL) {
 
   # Handle plural values
   if (!is.null(.n)) {
-    .index <- choose_plural_case(get_dictionary(), .n)
+    .index <- choose_plural_case(dict, .n)
     .ret <- .ret[[.index]]
   }
 
