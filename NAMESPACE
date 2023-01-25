@@ -3,6 +3,7 @@
 S3method(as.character,trns_locale)
 export(trans)
 export(trans_locale)
+export(trans_path)
 export(trans_reload)
 importFrom(dplyr,case_when)
 importFrom(glue,glue)
