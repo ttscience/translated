@@ -29,7 +29,3 @@ read_by_key <- function(dict, key) {
   key <- strsplit(key, ".", fixed = TRUE)[[1]]
   Reduce(`[[`, key, init = dict[["translation"]])
 }
-
-# TODO: perhaps add `.CURRENT_DICT` so that extraction can be skipped if locale
-#  hasn't changed (keep tracking of last locale then?)
-# TODO: what about fallbacks?

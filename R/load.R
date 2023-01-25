@@ -7,7 +7,6 @@ load_translations <- function() {
   # Read files
   json_data <- lapply(
     list.files(
-      # TODO: check default paths if not set
       getOption("translated_path"),
       pattern = getOption("translated_pattern"),
       full.names = TRUE
@@ -31,8 +30,3 @@ load_translations <- function() {
     modifyList(ret, data_to_insert)
   }, json_data, init = list())
 }
-
-# TODO: dictionaries should be able to inherit from other locales (languages
-#  and countries alike)
-# TODO: it should be possible to designate a default dictionary for a language;
-#  should a copy be stored under "_default" or should it be marked otherwise?
