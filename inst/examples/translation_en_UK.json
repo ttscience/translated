@@ -1,0 +1,11 @@
+{
+  "config": {
+    "locale": "en_UK",
+    "inherit": "en_US"
+  },
+  "translation": {
+    "nouns": {
+      "behavior": "behaviour"
+    }
+  }
+}

@@ -5,6 +5,10 @@
   },
   "translation": {
     "btn_insert": "Insert {number}",
-    "title": "Predefined number generator"
+    "title": "Predefined number generator",
+
+    "nouns": {
+      "behavior": "behavior"
+    }
   }
 }

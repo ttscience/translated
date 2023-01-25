@@ -6,5 +6,9 @@
   "translation": {
     "btn_insert": "Wstaw {number}",
     "title": "Generator liczb predefiniowanych"
+
+    "nouns": {
+      "behavior": "zachowanie"
+    }
   }
 }
