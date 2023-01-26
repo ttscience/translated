@@ -1,14 +1,15 @@
 {
   "config": {
     "locale": "en_US",
-    "plural": "dplyr::case_when(.n == 0 ~ 1, .n == 1 ~ 2, TRUE ~ 3)"
+    "plural": "n == 0 ~ 1, n == 1 ~ 2, TRUE ~ 3"
   },
   "translation": {
     "btn_insert": "Insert {number}",
     "title": "Predefined number generator",
 
     "nouns": {
-      "behavior": "behavior"
+      "behavior": "behavior",
+      "cat": ["no cats", "{.n} cat", "{.n} cats"]
     }
   }
 }
