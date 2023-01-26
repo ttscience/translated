@@ -2,7 +2,7 @@
   prev_options <- options()
 
   new_options <- list(
-    translated_path = "translation",
+    translated_path = NULL,
     translated_pattern = ".*\\.json",
     translated_locale = "en_US"
   )

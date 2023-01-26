@@ -4,6 +4,10 @@
 #' @importFrom stats setNames
 #' @importFrom utils modifyList
 load_translations <- function() {
+  if (is.null(getOption("translated_path"))) {
+    stop("Must define translation path first using `trans_path()`", call. = FALSE)
+  }
+
   # Read files
   json_data <- lapply(
     list.files(
