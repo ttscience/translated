@@ -9,7 +9,6 @@ get_dictionary <- function() {
     cache_dictionary()
   }
   .CURRENT_DICT
-  # access_dict_by_locale(getOption("translated_locale"))
 }
 
 access_dict_by_locale <- function(locale) {
