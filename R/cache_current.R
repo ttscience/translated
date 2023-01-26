@@ -12,6 +12,7 @@ cache_dictionary <- function() {
     inherit <- add[["config"]][["inherit"]]
     ret <- modifyList(add, ret)
   }
+  ret[["config"]][["plural"]] <- preprocess_plural(ret[["config"]][["plural"]])
 
   assignInMyNamespace(".CURRENT_DICT", ret)
 }
