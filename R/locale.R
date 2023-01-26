@@ -27,3 +27,8 @@ as.character.trns_locale <- function(x, ...) {
     glue("{x[['language']]}_{x[['country']]}.{x[['encoding']]}")
   }
 }
+
+#' @export
+print.trns_locale <- function(x, ...) {
+  print(as.character(x), ...)
+}
