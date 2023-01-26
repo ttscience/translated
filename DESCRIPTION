@@ -1,12 +1,14 @@
 Package: translated
-Title: What the Package Does (One Line, Title Case)
+Type: Package
+Title: Simple and Robust Translation System
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Date: 2023-01-26
+Authors@R: c(person("Laura", "Bakala",
+             email = "erdaradun.gaztea@gmail.com",
+             role = c("cre", "aut", "cph"),
+             comment = c(ORCID = "0000-0002-3213-2484")))
+Description: Allows translating with formatted string literals, grouped entries, and configurable system of plurals. Store entries in JSON files and use inheritance to handle dialect differences.
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
@@ -16,3 +18,4 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+URL: https://github.com/ttscience/translated
