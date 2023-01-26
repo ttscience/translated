@@ -14,10 +14,11 @@ get_dictionary <- function() {
   }
   country_map <- .TRANS_DICT[[language]]
 
+  # If unable to choose dictionary for the (un-)specified country
   if (is.null(country) || !country %in% names(country_map)) {
     country <- attr(country_map, "default", exact = TRUE)
+    # If no default, choose random country
     if (is.null(country)) {
-      # If no default, choose random country
       country <- sample(names(country_map), 1)
     }
   }
