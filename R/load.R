@@ -74,7 +74,7 @@ find_default_locales <- function(data) {
         warning(glue(
           "Can't decide default for '{lang}' language - ",
           "'{country}' or '{defaults[[lang]][['country']]}'?"
-        ))
+        ), call. = FALSE)
       }
     }
 
