@@ -15,9 +15,8 @@ get_dictionary <- function() {
   country_map <- .TRANS_DICT[[language]]
 
   if (is.null(country) || !country %in% names(country_map)) {
-    if ("_default" %in% names(country_map)) {
-      country <- "_default"
-    } else {
+    country <- attr(country_map, "default", exact = TRUE)
+    if (is.null(country)) {
       # If no default, choose random country
       country <- sample(names(country_map), 1)
     }
