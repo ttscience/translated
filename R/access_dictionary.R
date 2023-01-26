@@ -4,8 +4,16 @@ get_dictionary <- function() {
   if (is.null(.TRANS_DICT)) {
     trans_reload()
   }
+  if (is.null(.CURRENT_DICT) ||
+      getOption("translated_locale") != .LAST_LOCALE) {
+    cache_dictionary()
+  }
+  .CURRENT_DICT
+  # access_dict_by_locale(getOption("translated_locale"))
+}
 
-  locale <- interpret_locale(getOption("translated_locale"))
+access_dict_by_locale <- function(locale) {
+  locale <- interpret_locale(locale)
   language <- locale[["language"]]
   country <- locale[["country"]]
 
