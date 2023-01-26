@@ -1,8 +1,7 @@
 {
   "config": {
     "locale": "pl",
-    "plural": "dplyr::case_when(.n == 0 ~ 1, .n == 1 ~ 2, .n %% 100 %in% 12:14 ~ 4, .n %% 10 %in% 2:4 ~ 3, TRUE ~ 4)",
-    "default": true
+    "plural": "dplyr::case_when(.n == 0 ~ 1, .n == 1 ~ 2, .n %% 100 %in% 12:14 ~ 4, .n %% 10 %in% 2:4 ~ 3, TRUE ~ 4)"
   },
   "translation": {
     "btn_insert": "Wstaw {number}",
