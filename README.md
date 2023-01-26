@@ -108,3 +108,10 @@ trans("nouns.cat", .n = 1)
 ### Other features
 
 To see more details about what is possible, see the vignettes.
+
+## Dependency graph
+
+{translated} is meant to be lightweight, so only the key packages are
+imported:
+
+<img src="man/figures/README-deepdep-1.png" width="90%" />

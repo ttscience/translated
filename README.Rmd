@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "90%"
 )
 ```
 
@@ -88,3 +88,11 @@ trans("nouns.cat", .n = 1)
 ### Other features
 
 To see more details about what is possible, see the vignettes.
+
+## Dependency graph
+
+{translated} is meant to be lightweight, so only the key packages are imported:
+
+```{r deepdep, echo=FALSE}
+deepdep::plot_dependencies("translated", depth = 4, local = TRUE)
+```
