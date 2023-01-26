@@ -19,7 +19,7 @@ interpret_locale <- function(locale) {
 
 is_valid_locale <- function(locale) {
   regex <- "^\\w{2}(_\\w{2}(\\..+)?)?$"
-  grepl(.LOCALE_REGEX, locale, perl = TRUE)
+  grepl(regex, locale, perl = TRUE)
 }
 
 null_if_empty <- function(text) {
