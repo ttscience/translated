@@ -114,9 +114,38 @@ trans("cat", .n = 1)
 #> [1] "1 kot"
 ```
 
+### Entry grouping
+
+It can be difficult to keep track of all the entries in a large JSON
+file, so a grouping system comes in handy. Say, for example, that you’d
+created a large Shiny app with multiple modules and now you’d want it
+internationalized. You’d group your localization entries by module so
+that you find entries quicker and don’t have to worry about name
+clashes.
+
+To access an entry within a group, use a `"group.key"` string with dots
+dividing parts of the path. There is no limit to how deep the grouping
+may go, so the key may as well look like `"group1.group2.group3.key"`.
+
+And remember – *never* use a key with a dot, as the interpreter cannot
+distinguish between the two. But the easy grouping functionality is
+worth this slight inconvenience.
+
+    # JSON entry
+    "nouns": {
+      "behavior": "zachowanie"
+    }
+
+``` r
+trans("nouns.behavior")
+#> [1] "zachowanie"
+```
+
 ### Other features
 
-To see more details about what is possible, see the vignettes.
+If you have an idea for a feature that is missing from {translated},
+please start an issue on our GitHub repository. Pull requests are
+obviously welcome as well.
 
 ## JSON file structure
 
