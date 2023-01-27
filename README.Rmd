@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/translated)](https://CRAN.R-project.org/package=translated)
+[![Codecov test coverage](https://codecov.io/gh/ttscience/translated/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ttscience/translated?branch=master)
 <!-- badges: end -->
 
 {translated} is a complex internationalization system made easy. Provide a directory where localization JSON files are stored and access entries from any place in your code. Various features are incorporated: recursive string interpolation, custom plural form rules, entry grouping, inheriting localization data from other dialects (see [differences between British and American English](https://en.wikipedia.org/wiki/Comparison_of_American_and_British_English) for a canonical example), and more.
