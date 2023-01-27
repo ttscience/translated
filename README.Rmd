@@ -74,6 +74,11 @@ trans("title")
 
 Some entries can have gaps to fill with variable values. They are denoted with braces `{}` inside translation text, e.g. `"Courtney is {age} years old."`. Pass these variables as named parameters to `trans()` function (and don't worry, unused parameters are ignored). Most often they'll be strings, but anything coercible to string is valid, especially numbers:
 
+```
+# JSON entry
+"btn_insert": "Wstaw {number}"
+```
+
 ```{r trans_button_pl}
 trans("btn_insert", number = 4)
 ```
@@ -82,9 +87,14 @@ trans("btn_insert", number = 4)
 
 It is up to the user to provide singular and plural forms for each entry where it's necessary. {translated} provides the user with an easy method to make it work: all forms for an entry are stored in a list. With an appropriate number-to-form converter, the user only has to supply the number as `.n` parameter:
 
+```
+# JSON entry
+"cat": ["brak kotów", "{.n} kot", "{.n} koty", "{.n} kotów"]
+```
+
 ```{r trans_with_n}
-trans("nouns.cat", .n = 5)
-trans("nouns.cat", .n = 1)
+trans("cat", .n = 5)
+trans("cat", .n = 1)
 ```
 
 ### Other features

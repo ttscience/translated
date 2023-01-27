@@ -88,6 +88,9 @@ parameters to `trans()` function (and don’t worry, unused parameters are
 ignored). Most often they’ll be strings, but anything coercible to
 string is valid, especially numbers:
 
+    # JSON entry
+    "btn_insert": "Wstaw {number}"
+
 ``` r
 trans("btn_insert", number = 4)
 #> [1] "Wstaw 4"
@@ -101,10 +104,13 @@ to make it work: all forms for an entry are stored in a list. With an
 appropriate number-to-form converter, the user only has to supply the
 number as `.n` parameter:
 
+    # JSON entry
+    "cat": ["brak kotów", "{.n} kot", "{.n} koty", "{.n} kotów"]
+
 ``` r
-trans("nouns.cat", .n = 5)
+trans("cat", .n = 5)
 #> [1] "5 kotów"
-trans("nouns.cat", .n = 1)
+trans("cat", .n = 1)
 #> [1] "1 kot"
 ```
 
