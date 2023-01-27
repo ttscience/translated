@@ -11,3 +11,8 @@ test_that("compound keys are interpreted properly", {
     "doggie"
   )
 })
+
+test_that("returns NULL if key not found", {
+  expect_null(read_by_key(dict_1, "unavailable"))
+  expect_null(read_by_key(dict_1, "truly.unavailable"))
+})
