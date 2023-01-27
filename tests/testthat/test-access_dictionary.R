@@ -1,4 +1,7 @@
 # get_dictionary --------------------------------------------------------------
+test_that("current dictionary is always returned", {
+  expect_equal(get_dictionary(), translated:::.CURRENT_DICT)
+})
 
 # access_dict_by_locale -------------------------------------------------------
 test_that("existing locale is accessed straightforwardly", {
