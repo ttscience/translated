@@ -11,11 +11,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/translated)](https://CRAN.R-project.org/package=translated)
 <!-- badges: end -->
 
-{translated} is a complex translation system made easy. Provide a
-directory where translation JSON files are stored and access entries
+{translated} is a complex internationalization system made easy. Provide
+a directory where localization JSON files are stored and access entries
 from any place in your code. Various features are incorporated:
 recursive string interpolation, custom plural form rules, entry
-grouping, inheriting translation data from other dialects (see
+grouping, inheriting localization data from other dialects (see
 [differences between British and American
 English](https://en.wikipedia.org/wiki/Comparison_of_American_and_British_English)
 for a canonical example), and more.
@@ -33,7 +33,7 @@ devtools::install_github("ttscience/translated")
 ## How to use
 
 To start using {translated} in your project, specify where to find
-translation JSON files:
+localization JSON files:
 
 ``` r
 library(translated)
@@ -44,7 +44,7 @@ trans_path(path)
 
 ### Basic usage
 
-Processing translation data is done behind the curtains. The user can
+Processing localization data is done behind the curtains. The user can
 focus on using the entries:
 
 ``` r
@@ -52,7 +52,7 @@ trans("title")
 #> [1] "Predefined number generator"
 ```
 
-This was the translation for the default locale, i.e. `en_US` (United
+This was the localization for the default locale, i.e. `en_US` (United
 States English). The currently set locale can be checked with:
 
 ``` r
@@ -69,7 +69,7 @@ for example `pl_PL.UTF-8`), so we’ll use the simpler one:
 trans_locale("pl")
 ```
 
-The translation immediately changes:
+The localization immediately changes:
 
 ``` r
 trans("title")
@@ -78,7 +78,7 @@ trans("title")
 
 ### String interpolation
 
-Some translations can have gaps to fill with variable values. They are
+Some entries can have gaps to fill with variable values. They are
 denoted with braces `{}` inside translation text,
 e.g. `"Courtney is {age} years old."`. Pass these variables as named
 parameters to `trans()` function (and don’t worry, unused parameters are
