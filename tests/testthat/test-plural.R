@@ -43,3 +43,12 @@ test_that("malformed plural cases are detected", {
                "Malformed definition")
 })
 
+# choose_plural_case ----------------------------------------------------------
+test_that("plural is evaluated using `n` variable", {
+  expect_equal(choose_plural_case(dict_1, n = 22), 1)
+})
+
+test_that("first matching case is chosen", {
+  expect_equal(choose_plural_case(dict_1, n = 1), 2)
+  expect_equal(choose_plural_case(dict_1, n = 11), 3)
+})
