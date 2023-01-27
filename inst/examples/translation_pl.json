@@ -6,6 +6,7 @@
   "translation": {
     "btn_insert": "Wstaw {number}",
     "title": "Generator liczb predefiniowanych",
+    "cat": ["brak kotów", "{.n} kot", "{.n} koty", "{.n} kotów"],
 
     "nouns": {
       "behavior": "zachowanie",
