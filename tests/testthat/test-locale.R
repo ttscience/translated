@@ -1,4 +1,35 @@
 # interpret_locale ------------------------------------------------------------
+test_that("fully specified locale is propertly interpreted", {
+  expect_equal(
+    interpret_locale("eu_ES.utf8"),
+    structure(
+      list(language = "eu", country = "ES", encoding = "utf8"),
+      class = "trns_locale"
+    )
+  )
+})
+
+test_that("partially specified locale gets NULL for missing fields", {
+  expect_equal(
+    interpret_locale("eu_ES"),
+    structure(
+      list(language = "eu", country = "ES", encoding = NULL),
+      class = "trns_locale"
+    )
+  )
+  expect_equal(
+    interpret_locale("eu"),
+    structure(
+      list(language = "eu", country = NULL, encoding = NULL),
+      class = "trns_locale"
+    )
+  )
+})
+
+test_that("invalid locale raises an exception", {
+  expect_error(interpret_locale("eu_France"),
+               "must be a valid locale")
+})
 
 # is_valid_locale -------------------------------------------------------------
 test_that("language only is a valid locale", {
