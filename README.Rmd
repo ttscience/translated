@@ -91,6 +91,34 @@ trans("nouns.cat", .n = 1)
 
 To see more details about what is possible, see the vignettes.
 
+## JSON file structure
+
+Localization is to be stored in JSON files, all inside one folder. Each JSON may only hold data for one language [^1], yet more than one JSON may be used for a language [^2]. Files do not have to be in the same folder, subdirectories are allowed (so the user may store all data for a language in its own folder, for example).
+
+Each JSON identifies its belonging by a required component: `locale` stored under `config`. The other required component is `translation` map, although there is no limit to how many entries there must be. Furthermore, each locale should contain plurality case assignment as `plural` stored under `config`, although only one file per locale must contain it.
+
+There are two optional `config` fields and both do not need to be repeated as well: `inherit` and `default`. The former enables inheriting translation and plurality data from other locales, making it easier to translate dialectal differences. The latter sets the locale as the default for its language (e.g. in the example below, American English is used as the default version of English).
+
+To sum it up, an example JSON structure is shown below:
+
+```
+{
+  "config": {
+    "locale": "en_US",
+    "plural": "n == 0 ~ 1, n == 1 ~ 2, TRUE ~ 3",
+    "inherit": "en_UK",
+    "default": true
+  },
+  "translation": {
+    "key": "value",
+    "plural_key": ["case_1", "case_2", "case_3"],
+    "group": {
+      "key2": "value2"
+    }
+  }
+}
+```
+
 ## Dependency graph
 
 {translated} is meant to be lightweight, so only the key packages are imported:
@@ -98,3 +126,7 @@ To see more details about what is possible, see the vignettes.
 ```{r deepdep, echo=FALSE}
 deepdep::plot_dependencies("translated", depth = 4, local = TRUE)
 ```
+
+[^1]: Storing data in separate files for each language is in line with best practices. Usually there'll be a different translator assigned for each language and having the data split between files gets rid of the need for merging files.
+
+[^2]: Especially valuable in huge projects with a lot of text, as it enables grouping data in files by topic or module.
