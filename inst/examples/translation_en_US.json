@@ -6,6 +6,7 @@
   "translation": {
     "btn_insert": "Insert {number}",
     "title": "Predefined number generator",
+    "cat": ["no cats", "{.n} cat", "{.n} cats"],
 
     "nouns": {
       "behavior": "behavior",
