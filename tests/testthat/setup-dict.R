@@ -6,8 +6,9 @@ dict_1 <- list(
       encoding = NULL
     ),
     plural = list(
-      c("n == 1", "2"),
-      c("TRUE", "3")
+      c("n==1", "2"),
+      c("n%%4==3", "3"),
+      c("TRUE", "1")
     )
   ),
   translation = list(
