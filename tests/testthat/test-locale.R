@@ -71,3 +71,29 @@ test_that("null_if_empty() returns NULL if string empty", {
 })
 
 # as.character.trns_locale ----------------------------------------------------
+test_that("fully specified locale has its character representation", {
+  expect_equal(
+    as.character(structure(
+      list(language = "eu", country = "ES", encoding = "utf8"),
+      class = "trns_locale"
+    )),
+    "eu_ES.utf8"
+  )
+})
+
+test_that("partially specified locale ignores missing components", {
+  expect_equal(
+    as.character(structure(
+      list(language = "eu", country = "ES", encoding = NULL),
+      class = "trns_locale"
+    )),
+    "eu_ES"
+  )
+  expect_equal(
+    as.character(structure(
+      list(language = "eu", country = NULL, encoding = NULL),
+      class = "trns_locale"
+    )),
+    "eu"
+  )
+})
