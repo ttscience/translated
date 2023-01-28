@@ -79,6 +79,17 @@ trans("title")
 #> [1] "Generator liczb predefiniowanych"
 ```
 
+### Localizing multiple strings
+
+If more than one key is supplied, an equal amount of translations is
+returned. It makes it easier to translate vectors of strings,
+e.g. column names. Works with all other features, too.
+
+``` r
+trans(c("btn_close", "title"))
+#> [1] "Zamknij"                          "Generator liczb predefiniowanych"
+```
+
 ### String interpolation
 
 Some entries can have gaps to fill with variable values. They are

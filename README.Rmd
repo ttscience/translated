@@ -70,6 +70,14 @@ The localization immediately changes:
 trans("title")
 ```
 
+### Localizing multiple strings
+
+If more than one key is supplied, an equal amount of translations is returned. It makes it easier to translate vectors of strings, e.g. column names. Works with all other features, too.
+
+```{r trans_multiple}
+trans(c("btn_close", "title"))
+```
+
 ### String interpolation
 
 Some entries can have gaps to fill with variable values. They are denoted with braces `{}` inside translation text, e.g. `"Courtney is {age} years old."`. Pass these variables as named parameters to `trans()` function (and don't worry, unused parameters are ignored). Most often they'll be strings, but anything coercible to string is valid, especially numbers:

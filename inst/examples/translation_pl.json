@@ -5,6 +5,7 @@
   },
   "translation": {
     "btn_insert": "Wstaw {number}",
+    "btn_close": "Zamknij",
     "title": "Generator liczb predefiniowanych",
     "cat": ["brak kotów", "{.n} kot", "{.n} koty", "{.n} kotów"],
 
