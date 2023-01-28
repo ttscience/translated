@@ -25,10 +25,11 @@ for a canonical example), and more.
 
 ## Installation
 
-You can install the development version of {translated} from
-[GitHub](https://github.com/) with:
-
 ``` r
+# Install from CRAN:
+install.packages("translated")
+
+# Install development version from GitHub:
 # install.packages("devtools")
 devtools::install_github("ttscience/translated")
 ```
