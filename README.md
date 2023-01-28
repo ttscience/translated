@@ -141,6 +141,34 @@ trans("nouns.behavior")
 #> [1] "zachowanie"
 ```
 
+### Nested translations
+
+As it turns out, [{glue}](https://github.com/tidyverse/glue) package
+offers much more flexibility than just inserting predefined variables –
+it can execute arbitrary code too. This isn’t too helpful on its own;
+you may as well pass the result of this code as a named parameter to
+`trans()` function. However, this has an interesting effect regarding
+nested translations.
+
+See, it’s a common problem that a phrase may contain more than one noun
+dependent on its count. You may try to cover all possible cases, but
+their number grows exponentially. What you can do instead is to split
+the processing logic between multiple entries, each having one
+count-dependent part at most, then compound these entries using
+`trans()` function inside another entry. See the example below; however,
+note that this is just one of the possible solutions, perhaps not even
+optimal.
+
+    # JSON entry
+    "result": "Przeskanowałam {trans('file', .n = n_files)} w {trans('dir', .n = n_dirs)}.",
+    "file": ["{.n} plików", "{.n} plik", "{.n} pliki", "{.n} plików"],
+    "dir": ["żadnym folderze", "{.n} folderze", "{.n} folderach", "{.n} folderach"]
+
+``` r
+trans("result", n_files = 4, n_dirs = 1)
+#> [1] "Przeskanowałam 4 pliki w 1 folderze."
+```
+
 ### Other features
 
 If you have an idea for a feature that is missing from {translated},
