@@ -6,6 +6,11 @@
   "translation": {
     "btn_insert": "Wstaw {number}",
     "title": "Generator liczb predefiniowanych",
+    "cat": ["brak kotów", "{.n} kot", "{.n} koty", "{.n} kotów"],
+
+    "result": "Przeskanowałam {trans('file', .n = n_files)} w {trans('dir', .n = n_dirs)}.",
+    "file": ["{.n} plików", "{.n} plik", "{.n} pliki", "{.n} plików"],
+    "dir": ["żadnym folderze", "{.n} folderze", "{.n} folderach", "{.n} folderach"],
 
     "nouns": {
       "behavior": "zachowanie",

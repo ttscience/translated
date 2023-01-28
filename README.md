@@ -9,6 +9,9 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/translated)](https://CRAN.R-project.org/package=translated)
+[![R-CMD-check](https://github.com/ttscience/translated/workflows/R-CMD-check/badge.svg)](https://github.com/ttscience/translated/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/ttscience/translated/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ttscience/translated?branch=master)
 <!-- badges: end -->
 
 {translated} is a complex internationalization system made easy. Provide
@@ -85,6 +88,9 @@ parameters to `trans()` function (and don’t worry, unused parameters are
 ignored). Most often they’ll be strings, but anything coercible to
 string is valid, especially numbers:
 
+    # JSON entry
+    "btn_insert": "Wstaw {number}"
+
 ``` r
 trans("btn_insert", number = 4)
 #> [1] "Wstaw 4"
@@ -98,16 +104,116 @@ to make it work: all forms for an entry are stored in a list. With an
 appropriate number-to-form converter, the user only has to supply the
 number as `.n` parameter:
 
+    # JSON entry
+    "cat": ["brak kotów", "{.n} kot", "{.n} koty", "{.n} kotów"]
+
 ``` r
-trans("nouns.cat", .n = 5)
+trans("cat", .n = 5)
 #> [1] "5 kotów"
-trans("nouns.cat", .n = 1)
+trans("cat", .n = 1)
 #> [1] "1 kot"
+```
+
+### Entry grouping
+
+It can be difficult to keep track of all the entries in a large JSON
+file, so a grouping system comes in handy. Say, for example, that you’d
+created a large Shiny app with multiple modules and now you’d want it
+internationalized. You’d group your localization entries by module so
+that you find entries quicker and don’t have to worry about name
+clashes.
+
+To access an entry within a group, use a `"group.key"` string with dots
+dividing parts of the path. There is no limit to how deep the grouping
+may go, so the key may as well look like `"group1.group2.group3.key"`.
+
+And remember – *never* use a key with a dot, as the interpreter cannot
+distinguish between the two. But the easy grouping functionality is
+worth this slight inconvenience.
+
+    # JSON entry
+    "nouns": {
+      "behavior": "zachowanie"
+    }
+
+``` r
+trans("nouns.behavior")
+#> [1] "zachowanie"
+```
+
+### Nested translations
+
+As it turns out, [{glue}](https://github.com/tidyverse/glue) package
+offers much more flexibility than just inserting predefined variables –
+it can execute arbitrary code too. This isn’t too helpful on its own;
+you may as well pass the result of this code as a named parameter to
+`trans()` function. However, this has an interesting effect regarding
+nested translations.
+
+See, it’s a common problem that a phrase may contain more than one noun
+dependent on its count. You may try to cover all possible cases, but
+their number grows exponentially. What you can do instead is to split
+the processing logic between multiple entries, each having one
+count-dependent part at most, then compound these entries using
+`trans()` function inside another entry. See the example below; however,
+note that this is just one of the possible solutions, perhaps not even
+optimal.
+
+    # JSON entry
+    "result": "Przeskanowałam {trans('file', .n = n_files)} w {trans('dir', .n = n_dirs)}.",
+    "file": ["{.n} plików", "{.n} plik", "{.n} pliki", "{.n} plików"],
+    "dir": ["żadnym folderze", "{.n} folderze", "{.n} folderach", "{.n} folderach"]
+
+``` r
+trans("result", n_files = 4, n_dirs = 1)
+#> [1] "Przeskanowałam 4 pliki w 1 folderze."
 ```
 
 ### Other features
 
-To see more details about what is possible, see the vignettes.
+If you have an idea for a feature that is missing from {translated},
+please start an issue on our GitHub repository. Pull requests are
+obviously welcome as well.
+
+## JSON file structure
+
+Localization is to be stored in JSON files, all inside one folder. Each
+JSON may only hold data for one language [^1], yet more than one JSON
+may be used for a language [^2]. Files do not have to be in the same
+folder, subdirectories are allowed (so the user may store all data for a
+language in its own folder, for example).
+
+Each JSON identifies its belonging by a required component: `locale`
+stored under `config`. The other required component is `translation`
+map, although there is no limit to how many entries there must be.
+Furthermore, each locale should contain plurality case assignment as
+`plural` stored under `config`, although only one file per locale must
+contain it.
+
+There are two optional `config` fields and both do not need to be
+repeated as well: `inherit` and `default`. The former enables inheriting
+translation and plurality data from other locales, making it easier to
+translate dialectal differences. The latter sets the locale as the
+default for its language (e.g. in the example below, American English is
+used as the default version of English).
+
+To sum it up, an example JSON structure is shown below:
+
+    {
+      "config": {
+        "locale": "en_US",
+        "plural": "n == 0 ~ 1, n == 1 ~ 2, TRUE ~ 3",
+        "inherit": "en_UK",
+        "default": true
+      },
+      "translation": {
+        "key": "value",
+        "plural_key": ["case_1", "case_2", "case_3"],
+        "group": {
+          "key2": "value2"
+        }
+      }
+    }
 
 ## Dependency graph
 
@@ -115,3 +221,11 @@ To see more details about what is possible, see the vignettes.
 imported:
 
 <img src="man/figures/README-deepdep-1.png" width="90%" />
+
+[^1]: Storing data in separate files for each language is in line with
+    best practices. Usually there’ll be a different translator assigned
+    for each language and having the data split between files gets rid
+    of the need for merging files.
+
+[^2]: Especially valuable in huge projects with a lot of text, as it
+    enables grouping data in files by topic or module.
