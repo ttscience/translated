@@ -93,7 +93,9 @@ trans("btn_insert", number = 4)
 
 ### Plural forms
 
-It is up to the user to provide singular and plural forms for each entry where it's necessary. {translated} provides the user with an easy method to make it work: all forms for an entry are stored in a list. With an appropriate number-to-form converter, the user only has to supply the number as `.n` parameter:
+It is up to the user to provide singular and plural forms for each entry where it's necessary. {translated} provides the user with an easy method to make it work: all forms for an entry are stored in a list. With an appropriate number-to-form converter, the user only has to supply the number as `.n` parameter.
+
+To see details on defining rules of plural forms, see ["Plurality rule definition" section](<#Plurality rule definition>).
 
 ```
 # JSON entry
@@ -173,6 +175,38 @@ To sum it up, an example JSON structure is shown below:
 }
 ```
 
+### Plurality rule definition
+
+A plurality rule consists of a set of sequentially-evaluated cases. They are separated by commas (`,`). Each rule has two components: condition and value. Should the condition evaluate to `TRUE`, its value is returned, else the next rule is tested.
+
+Values are placed to the right of their conditions, separated by a tilde (`~`), meaning that conditions should not use tilde in their code. This should not be a problem, however, as only a few simple operations should suffice to create an appropriate set of rules for any language.
+
+A condition has access to one variable: `n`. This is the count that influences the phrase form. After evaluation, a condition should return a single logical value, either `TRUE` or `FALSE`.
+
+Now that we've discussed rule structure, let's break down two examples, starting with the one from above JSON:
+
+`"n == 0 ~ 1, n == 1 ~ 2, TRUE ~ 3"`
+
+There are three cases in this example. The first case matches if `n` is equal to 0, returning 1. The second matches with 1 (for a singular form), returning 2. The last case is a "catch-all", returning 3 for all inputs that did not match previous cases (i.e. any number other than 0 or 1).
+
+Analogous rule for Polish is much more complicated:
+
+`"n == 0 ~ 1, n == 1 ~ 2, n %% 100 %in% 12:14 ~ 4, n %% 10 %in% 2:4 ~ 3, TRUE ~ 4"`
+
+Oof, this is more than double the length of English rule. But it's not that difficult in its essence.
+
+First two cases are already known to you, they match 0s and 1s. There's also a "catch-all" at the end, returning 4. And the part inbetween? It returns 3 for all numbers returning 2, 3 or 4 modulo 10 _except_ [^3] numbers that return 12, 13 or 14 modulo 100. That modulo operator `%%` and inclusion operator `%is%` are the other two key operations.
+
+Of course, any logical operator could be applied as well, so instead of writing
+
+`n %% 100 %in% 12:14 ~ 4, n %% 10 %in% 2:4 ~ 3`,
+
+one could write
+
+`(n %% 10 %in% 2:4) && !(n %% 100 %in% 12:14) ~ 3`.
+
+However, it is best to stick to the simplest statements possible.
+
 ## Dependency graph
 
 {translated} is meant to be lightweight, so only the key packages are imported:
@@ -184,3 +218,5 @@ deepdep::plot_dependencies("translated", depth = 4, local = TRUE)
 [^1]: Storing data in separate files for each language is in line with best practices. Usually there'll be a different translator assigned for each language and having the data split between files gets rid of the need for merging files.
 
 [^2]: Especially valuable in huge projects with a lot of text, as it enables grouping data in files by topic or module.
+
+[^3]: "Except" means that the following case should precede the previous one.
