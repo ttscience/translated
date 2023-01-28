@@ -5,6 +5,7 @@
   },
   "translation": {
     "btn_insert": "Insert {number}",
+    "btn_close": "Close",
     "title": "Predefined number generator",
     "cat": ["no cats", "{.n} cat", "{.n} cats"],
 
