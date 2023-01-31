@@ -7,7 +7,7 @@ Authors@R: c(person("Laura", "Bakala",
              email = "erdaradun.gaztea@gmail.com",
              role = c("cre", "aut", "cph"),
              comment = c(ORCID = "0000-0002-3213-2484")))
-Description: Allows translating with formatted string literals, grouped entries, and configurable system of plurals. Store entries in JSON files and use inheritance to handle dialect differences.
+Description: Allows translating with formatted string literals, grouped entries, and configurable system of plurals. Have a separate file for each locale and use inheritance to handle dialect differences.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
