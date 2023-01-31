@@ -7,6 +7,8 @@
 #' trans_path(system.file("examples", package = "translated"))
 #' trans_reload()
 #'
+#' @return No return value, called for its side effect.
+#'
 #' @importFrom utils assignInMyNamespace
 #' @export
 trans_reload <- function() {
