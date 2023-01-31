@@ -6,6 +6,9 @@
 \usage{
 trans_reload()
 }
+\value{
+No return value, called for its side effect.
+}
 \description{
 This function forces the translations to be loaded from JSON
 files again.
