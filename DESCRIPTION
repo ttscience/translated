@@ -3,10 +3,12 @@ Type: Package
 Title: Simple and Robust Translation System
 Version: 0.1.0.9000
 Date: 2023-01-26
-Authors@R: c(person("Laura", "Bakala",
-             email = "erdaradun.gaztea@gmail.com",
-             role = c("cre", "aut", "cph"),
-             comment = c(ORCID = "0000-0002-3213-2484")))
+Authors@R: c(
+  person("Laura", "Bakala", email = "Laura.Bakala@ttsi.com.pl",
+         role = c("cre", "aut"),
+         comment = c(ORCID = "0000-0002-3213-2484")),
+  person("Transition Technologies Science", role = c("cph", "fnd"))
+  )
 Description: Allows translating with formatted string literals, grouped entries, and configurable system of plurals. Have a separate file for each locale and use inheritance to handle dialect differences.
 License: GPL (>= 3)
 Encoding: UTF-8
