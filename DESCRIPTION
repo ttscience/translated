@@ -1,7 +1,7 @@
 Package: translated
 Type: Package
 Title: Simple and Robust Translation System
-Version: 0.1.0.9000
+Version: 0.1.1
 Date: 2023-04-25
 Authors@R: c(
   person("Laura", "Bakala", email = "Laura.Bakala@ttsi.com.pl",

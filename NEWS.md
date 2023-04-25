@@ -1,4 +1,4 @@
-# translated (development version)
+# translated 0.1.1
 
 * Added `trans_available()` that lists all locales under a specified translation path (#17).
 * Fixed bug where changing path again would not trigger a reload (#18).
