@@ -29,11 +29,7 @@ trans_available <- function() {
   )
 
   # find the available locales from the nested list
-  tmp_list <- lapply(json_data, function(x) x[["config"]][["locale"]])
-
-  # create neater available locales display
-  available_list <- as.data.frame(do.call(rbind, lapply(tmp_list, as.data.frame)))
-  colnames(available_list) <- "Available Locales"
-
-  return(available_list)
+  vapply(json_data, function(x) {
+    x[["config"]][["locale"]]
+  }, character(1))
 }
