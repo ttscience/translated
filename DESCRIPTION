@@ -1,17 +1,22 @@
 Package: translated
 Type: Package
 Title: Simple and Robust Translation System
-Version: 0.1.0
-Date: 2023-01-26
-Authors@R: c(person("Laura", "Bakala",
-             email = "erdaradun.gaztea@gmail.com",
-             role = c("cre", "aut", "cph"),
-             comment = c(ORCID = "0000-0002-3213-2484")))
+Version: 0.1.1
+Date: 2023-04-25
+Authors@R: c(
+  person("Laura", "Bakala", email = "Laura.Bakala@ttsi.com.pl",
+         role = c("cre", "aut"),
+         comment = c(ORCID = "0000-0002-3213-2484")),
+  person("Edward", "Gillian", email = "edward.gillian@ttsi.com.pl",
+         role = c("ctb"),
+         comment = c(ORCID = "0000-0003-2732-5107")),
+  person("Transition Technologies Science", role = c("cph", "fnd"))
+  )
 Description: Allows translating with formatted string literals, grouped entries, and configurable system of plurals. Have a separate file for each locale and use inheritance to handle dialect differences.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Imports: 
     glue,
     jsonlite
