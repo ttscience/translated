@@ -16,11 +16,14 @@
 #' # Check the current path
 #' trans_path()
 #'
+#' @importFrom utils assignInMyNamespace
 #' @export
 trans_path <- function(path) {
   if (missing(path)) {
     getOption("translated_path")
   } else {
+    assignInMyNamespace(".TRANS_DICT", NULL)
+    assignInMyNamespace(".CURRENT_DICT", NULL)
     options(translated_path = path)
   }
 }
