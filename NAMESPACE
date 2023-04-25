@@ -3,6 +3,7 @@
 S3method(as.character,trns_locale)
 S3method(print,trns_locale)
 export(trans)
+export(trans_available)
 export(trans_locale)
 export(trans_path)
 export(trans_reload)
