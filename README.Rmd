@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # translated
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN status](https://www.r-pkg.org/badges/version/translated)](https://CRAN.R-project.org/package=translated)
 [![R-CMD-check](https://github.com/ttscience/translated/workflows/R-CMD-check/badge.svg)](https://github.com/ttscience/translated/actions)
 [![Codecov test coverage](https://codecov.io/gh/ttscience/translated/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ttscience/translated?branch=master)
@@ -70,6 +70,12 @@ The localization immediately changes:
 
 ```{r trans_title_pl}
 trans("title")
+```
+
+To list all currently available locales, call:
+
+```{r trans_available}
+trans_available()
 ```
 
 ### Localizing multiple strings

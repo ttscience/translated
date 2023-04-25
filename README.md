@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/translated)](https://CRAN.R-project.org/package=translated)
 [![R-CMD-check](https://github.com/ttscience/translated/workflows/R-CMD-check/badge.svg)](https://github.com/ttscience/translated/actions)
@@ -78,6 +78,13 @@ The localization immediately changes:
 ``` r
 trans("title")
 #> [1] "Generator liczb predefiniowanych"
+```
+
+To list all currently available locales, call:
+
+``` r
+trans_available()
+#> [1] "en_UK" "en_US" "pl"
 ```
 
 ### Localizing multiple strings
